@@ -1,0 +1,23 @@
+L = []
+n = int(input("How many elements do you want to add to the list? "))
+for i in range(n):
+    element = input(f"Enter element {i + 1}: ")
+    if element.isdigit() or (element[0] == '-' and element[1:].isdigit()):
+        L.append(int(element))
+    elif element.replace('.', '', 1).isdigit() and element.count('.') < 2:
+        L.append(float(element))
+    else:
+        L.append(element)
+print(f"The list you created is: {L}")
+flag = True
+for i in L:
+    if type(i) == str:
+        flag = False
+        break
+    else:
+        flag = True
+if flag == False:
+    print("Can't find the maximum integer as one of the inputs is a string!")
+else:
+    maximum = max(L)
+    print(f"Maximum integer in the list {L} is {maximum}")
